@@ -93,6 +93,7 @@ alias n="nvim"
 alias elfs="julia -q"
 alias please="sudo"
 alias pl="perl6"
+alias gst="git status"
 
 
 #*******************#
