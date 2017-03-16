@@ -1,0 +1,128 @@
+#********************#
+#** Suffix Aliases **#
+#********************#
+
+alias -s c="e"
+alias -s cpp="e"
+alias -s rs="e"
+alias -s h="e"
+alias -s hs="e"
+alias -s go="e"
+# alias -s d="e"
+# alias -s sh="e"
+# alias -s py="e"
+# alias -s rb="e"
+alias -s txt="e"
+alias -s org="te"
+alias -s html="/usr/share/vim/vim74/macros/less.sh"
+alias -s js="/usr/share/vim/vim74/macros/less.sh"
+alias -s php="/usr/share/vim/vim74/macros/less.sh"
+
+alias -s mp3="mpv"
+alias -s mp4="mpv"
+alias -s wma="mpv"
+alias -s avi="mpv"
+alias -s mkv="mpv"
+
+
+#***********#
+#** Build **#
+#***********#
+
+alias cbuild="gcc -std=gnu11 -g -O3 -Wall -Wextra -Wpedantic"
+
+# C "Scripts"
+go_libs="-lm"
+go_flags="-std=gnu11 -g -Wall -Wextra -Wpedantic -O3 -include ~/Documents/Code/C/21stCenturyC/allheads.h"
+alias go_c="gcc -xc - $go_libs $go_flags"
+
+cpp() {
+    g++ -std=c++14 -Wall -Wextra -Wpedantic $1 -o $2
+}
+
+dmake() {
+    gdc -Wall -Wdeprecated -Wunknown-pragmas $1 -o $2
+}
+
+elfsrun() {
+    wolframscript -c $@
+}
+
+mxrun() {
+    mathics -qe $@
+}
+
+ccompile() {
+    gcc -std=gnu11 -Wall -Wextra -Wpedantic $1 -o $2
+}
+
+crun() {
+    make $1 && ./$1
+}
+
+words() {
+    cat /usr/share/dict/words | fzf-tmux -l 20% --multi --reverse
+}
+
+math() {
+    print "$@" | bc
+}
+
+
+
+
+#*******************#
+#** Miscellaneous **#
+#*******************#
+
+alias elfscalc="wolframscript -noprompt"
+alias kernel="MathKernel -noprompt"
+alias mx="mathics -q"
+alias sandbox="mathics -q"
+alias mxserver="mathicsserver"
+alias te="emacsclient -t"
+alias kthxbai="sudo shutdown -h now"
+alias comeback="sudo shutdown -r now"
+alias vless="/usr/share/vim/vim74/macros/less.sh"
+alias deba="sudo apt-get autoremove"
+alias elfsh="fish"
+alias palantir="fzf -i"
+alias eye="fzf -i"
+alias TheEye="fzf-tmux"
+alias n="nvim"
+alias elfs="julia -q"
+alias please="sudo"
+alias pl="perl6"
+
+
+#*******************#
+#**     Tasks     **#
+#*******************#
+alias habit="task rc.data.location=~/.habit"
+alias t="task"
+alias inbox="task add +inbox"
+
+tickle() {
+    deadline=$1
+    shift
+    inbox +tickle wait:$deadline $@
+}
+
+alias tick=tickle
+alias think="tickle +1d"
+alias rnd="task add +rnd +@computer +@online"
+
+webpage_title() {
+    wget -qO- "$*" | hxselect -s '\n' -c 'title' 2>/dev/null
+}
+
+read_and_review() {
+    link="$1"
+    title=$(webpage_title $link)
+    print $title
+    descr="\"Read and Review: $title\""
+    id=$(task add +next +rnr "$descr" | sed -n 's/Created task \(.*\)./\1/p')
+    task "$id" annotate "$link"
+}
+
+alias rnr=read_and_review
