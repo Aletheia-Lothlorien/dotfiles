@@ -94,6 +94,7 @@ alias elfs="julia -q"
 alias please="sudo"
 alias pl="perl6"
 alias gst="git status"
+alias myemacs="emacs -q -l ~/sandbox/.emacs"
 
 
 #*******************#

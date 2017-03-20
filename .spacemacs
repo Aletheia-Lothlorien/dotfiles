@@ -52,6 +52,7 @@ values."
      (haskell :variables haskell-enable-hindent-style "johan-tibell")
      html
      idris
+     ipython-notebook
      javascript
      (latex :variables
             latex-build-command "LatexMk"
@@ -107,6 +108,7 @@ values."
                                       (perl6-mode
                                        :ensure t
                                        :defer t)
+                                      (darcula-theme :ensure t)
                                       )
                                       ;; (shen-elisp
                                       ;;  :location (recipe :repo "deech/shen-elisp"
