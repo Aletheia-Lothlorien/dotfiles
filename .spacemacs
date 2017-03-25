@@ -75,6 +75,7 @@ values."
             scala-auto-insert-asterisk-in-comments t
             scala-use-unicode-arrows t)
             ;; scala-auto-start-ensime t)
+     scheme
      search-engine
      semantic
      (shell :variables
